@@ -18,7 +18,6 @@ from osc_lib import utils
 from osc_lib.command import command
 
 from vbclient.common.i18n import _
-from vbclient.osc.v1 import parser_builder as pb
 
 LOG = logging.getLogger(__name__)
 
@@ -28,9 +27,24 @@ class CreateVolumeBackup(command.Command):
 
     def get_parser(self, prog_name):
         parser = super(CreateVolumeBackup, self).get_parser(prog_name)
-        pb.Backup.add_volume_arg(parser)
-        pb.Backup.add_backup_name_arg(parser)
-        pb.Backup.add_backup_desc_arg(parser)
+        parser.add_argument(
+            "volume",
+            metavar="<volume>",
+            help=_("Volume to backup (name or ID)")
+        )
+
+        parser.add_argument(
+            "--name",
+            metavar="<name>",
+            help=_("Name of the backup")
+        )
+
+        parser.add_argument(
+            "--description",
+            required=False,
+            metavar="<description>",
+            help=_("Description of the backup")
+        )
         return parser
 
     def take_action(self, args):
@@ -39,3 +53,28 @@ class CreateVolumeBackup(command.Command):
         mgr = self.app.client_manager.volume_backup.backup_mgr
         job = mgr.create(volume_id, name=args.name, description=args.description)
         return 'Request Received, job id: ' + job['job_id']
+
+
+class RestoreVolumeBackup(command.ShowOne):
+    _description = _("Restore volume backup")
+
+    def get_parser(self, prog_name):
+        parser = super(RestoreVolumeBackup, self).get_parser(prog_name)
+        parser.add_argument(
+            "backup",
+            metavar="<backup>",
+            help=_("Backup to restore (name or ID)")
+        )
+        parser.add_argument(
+            "volume",
+            metavar="<volume>",
+            help=_("Volume to restore to (name or ID)")
+        )
+        return parser
+
+    def take_action(self, args):
+        volume_client = self.app.client_manager.volume
+        backup = utils.find_resource(volume_client.backups, args.backup)
+        volume = utils.find_resource(volume_client.volumes, args.volume)
+        mgr = self.app.client_manager.volume_backup.backup_mgr
+        return volume_client.restores.restore(backup.id, volume.id)

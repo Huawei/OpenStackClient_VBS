@@ -20,13 +20,14 @@ from vbclient.tests import base
 
 
 class TestHTTPExceptions(base.BaseTestCase):
-
     def test_from_http_exception(self):
         mock_resp = mock.Mock()
         mock_resp.status_code = 413
         mock_resp.json.return_value = {
-            'error_code': '413',
-            'error_description': 'Request Entity Too Large',
+            "error": {
+                'code': '413',
+                'message': 'Request Entity Too Large',
+            }
         }
         mock_resp.headers = {
             'Content-Type': 'application/json',

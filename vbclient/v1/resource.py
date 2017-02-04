@@ -21,3 +21,6 @@ from vbclient.common import resource
 class VolumeBackup(resource.Resource, display.Display):
     """Volume Backup resource instance"""
 
+
+class VolumeBackupRestore(resource.Resource, display.Display):
+    """Volume Backup Restore resource instance"""

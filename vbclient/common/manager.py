@@ -94,9 +94,9 @@ class Manager(object):
         else:
             return resource.StrWithMeta(resp.text, resp)
 
-    def _create(self, url, data=None, key=None, raw=False, headers={}):
-        if data:
-            resp, body = self.http_client.post(url, json=data, headers=headers)
+    def _create(self, url, json=None, key=None, raw=False, headers={}):
+        if json:
+            resp, body = self.http_client.post(url, json=json, headers=headers)
         else:
             resp, body = self.http_client.post(url, headers=headers)
 

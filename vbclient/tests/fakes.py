@@ -78,7 +78,7 @@ class FakeManager(manager.Manager):
         return self._update_all(resource_url, resource, **kwargs)
 
     def create(self, resource=None):
-        return self._create(FAKE_RESOURCE_COLLECTION_URL, data=resource)
+        return self._create(FAKE_RESOURCE_COLLECTION_URL, json=resource)
 
     def delete(self, resource):
         return self._delete(FAKE_RESOURCE_ITEM_URL % utils.get_id(resource))

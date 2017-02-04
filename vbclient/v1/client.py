@@ -36,13 +36,14 @@ class Client(object):
             Keyword arguments passed to keystoneauth1.session.Session().
         """
 
-        from vbclient.common import httpclient
+        from vbclient.common import httpclient as client
         from vbclient.v1 import backup_mgr
+        from vbclient.v1 import restore_mgr
 
         # http_log_debug = utils.get_effective_log_level() <= logging.DEBUG
         default_options = {
             'service_name': self.service_name,
-            'client_name': 'Volume Backup Client',
+            'client_name': 'Volume Backup Client(HuaWei)',
             'client_version': 'V2',
             'logger': LOGGER,
         }
@@ -50,6 +51,7 @@ class Client(object):
 
         if endpoint:
             endpoint += '/V2/%(project_id)s'
-        self.client = httpclient.OpenStackHttpClient(session, endpoint, **kwargs)
+        self.client = client.OpenStackHttpClient(session, endpoint, **kwargs)
         self.backup_mgr = backup_mgr.VolumeBackupManager(self.client)
+        self.restore_mgr = restore_mgr.VolumeBackupRestoreManager(self.client)
 

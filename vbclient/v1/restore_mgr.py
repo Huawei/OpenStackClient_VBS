@@ -18,23 +18,18 @@ from vbclient.common import manager
 from vbclient.v1 import resource
 
 
-class VolumeBackupManager(manager.Manager):
+class VolumeBackupRestoreManager(manager.Manager):
     """Volume backup API management"""
-    resource_class = resource.VolumeBackup
+    resource_class = resource.VolumeBackupRestore
 
-    def create(self, volume_id, name=None, description=None):
-        """Creates a volume backup
+    def restore(self, backup_id, volume_id):
+        """Restore a backup to a volume.
 
-        :param volume_id: The ID of the volume to backup.
-        :param name: The name of the backup.
-        :param description: The description of the backup.
-        :rtype: :class:`DictWithMeta
+        :param backup_id: The ID of the backup to restore.
+        :param volume_id: The ID of the volume to restore the backup to.
+        :rtype: :class:`DictWithMeta`
         """
-        body = {
-            'backup': {
-                'volume_id': volume_id,
-                'name': name,
-                'description': description
-            }
-        }
-        return self._create('/cloudbackups', json=body, raw=True)
+        data = {'restore': {'volume_id': volume_id}}
+        return self._create("/cloudbackups/%s/restore" % backup_id,
+                            json=data,
+                            raw=True)
