@@ -43,7 +43,6 @@ class Job(resource.Resource, display.Display):
         "Begin Time",
         "End Time",
         "entities",
-        "Fail Reason",
         "Status",
     ]
 
@@ -58,9 +57,9 @@ class Job(resource.Resource, display.Display):
 
     def get_show_column_names(self):
         column_names = self.show_column_names[:]
-        if "fail_reason" in self.original:
+        if "fail_reason" in self.original and self.fail_reason:
             column_names.insert(5, "Fail Reason")
-        if "error_code" in self.original:
+        if "error_code" in self.original and self.error_code:
             column_names.insert(5, "Error Code")
         return column_names
 
