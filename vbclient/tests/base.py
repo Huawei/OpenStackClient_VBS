@@ -13,6 +13,8 @@
 #   License for the specific language governing permissions and limitations
 #   under the License.
 #
+import mock
+
 from osc_lib.tests import utils
 
 from vbclient.tests import fakes
@@ -23,14 +25,17 @@ class BaseTestCase(utils.TestCommand):
     pass
 
 
-class CloudEyeV1BaseTestCase(BaseTestCase):
-    """Base test case class for Cloud Eye V1 management API."""
+class VolumeBackupBaseTestCase(BaseTestCase):
+    """Base test case class for HuaWei Volume Backup management API."""
 
     def __init__(self, *args, **kwargs):
-        super(CloudEyeV1BaseTestCase, self).__init__(*args, **kwargs)
+        super(VolumeBackupBaseTestCase, self).__init__(*args, **kwargs)
         self.cmd = None
 
     def setUp(self):
-        super(CloudEyeV1BaseTestCase, self).setUp()
-        fake_cloudeye_client = fakes.FakeCloudEyeV1Client()
-        self.app.client_manager.cloudeye = fake_cloudeye_client
+        super(VolumeBackupBaseTestCase, self).setUp()
+        fake_vb_client = fakes.FakeVolumeBackupClient()
+        self.app.client_manager.volume_backup = fake_vb_client
+        self.app.client_manager.volume = mock.Mock(
+            volumes=mock.Mock(), backups=mock.Mock()
+        )

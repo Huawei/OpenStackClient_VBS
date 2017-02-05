@@ -25,7 +25,7 @@ class Client(object):
     service_name = 'volume_backup'
 
     def __init__(self, session=None, endpoint=None, **kwargs):
-        """Initialize a new client for the VBS v1 API.
+        """Initialize a new client for the VBS v2 API.
 
         :param keystoneauth1.session.Session session:
             The session to be used for making the HTTP API calls.  If None,
@@ -49,7 +49,7 @@ class Client(object):
         kwargs.update(default_options)
 
         if endpoint:
-            endpoint += '/v1/%(project_id)s'
+            endpoint += '/v2/%(project_id)s'
 
         self.client = client.OpenStackHttpClient(session, endpoint, **kwargs)
         self.job_mgr = job_mgr.JobManager(self.client)

@@ -26,7 +26,7 @@ DEFAULT_API_VERSION = '2'
 # default.json->vbs_api_version
 API_VERSION_OPTION = 'os_vb_api_version'
 API_VERSIONS = {
-    '1': 'vbclient.v1.client.Client',
+    '1': 'vbclient.v2.client.Client',
     '2': 'vbclient.v2.client.Client',
 }
 

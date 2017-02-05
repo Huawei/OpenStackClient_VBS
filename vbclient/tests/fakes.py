@@ -22,9 +22,12 @@ from vbclient.common import display
 from vbclient.common import manager
 from vbclient.common import resource as r
 from vbclient.common import utils
+from vbclient.v1 import job_mgr
 from vbclient.v2 import backup_mgr
 
 # fake request id
+from vbclient.v2 import restore_mgr
+
 FAKE_REQUEST_ID = 'req-0594c66b-6973-405c-ae2c-43fcfc00f2e3'
 
 # fake resource id
@@ -116,8 +119,12 @@ class FakeHTTPResponse(object):
         return jsonutils.loads(self.content)
 
 
-class FakeCloudEyeV1Client(object):
+class FakeVolumeBackupClient(object):
 
     def __init__(self, **kwargs):
         self.fake_http_client = mock.Mock()
         self.backup_mgr = backup_mgr.VolumeBackupManager(self.fake_http_client)
+        self.restore_mgr = restore_mgr.VolumeBackupRestoreManager(
+            self.fake_http_client
+        )
+        self.job_mgr = job_mgr.JobManager(self.fake_http_client)

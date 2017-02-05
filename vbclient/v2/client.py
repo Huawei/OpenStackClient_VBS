@@ -25,7 +25,7 @@ class Client(object):
     service_name = 'volume_backup'
 
     def __init__(self, session=None, endpoint=None, **kwargs):
-        """Initialize a new client for the VBS v1 API.
+        """Initialize a new client for the VBS v2 API.
 
         :param keystoneauth1.session.Session session:
             The session to be used for making the HTTP API calls.  If None,
