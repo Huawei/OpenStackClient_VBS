@@ -29,7 +29,8 @@ Command Line Client Usage
 This plugin is integrated with `OpenStack Client`_ , so the command line client
 follow all the usage **openstack** provided.
 
-.. code:: console
+
+Show Help for command
 
     $ openstack --help
     usage: openstack [--version] [-v | -q] [--log-file LOG_FILE] [-h] [--debug]
@@ -79,88 +80,29 @@ Cloud-Eye-Service Client contains commands list in table below, use -h option to
 +----------------------+
 
 
+1. Show Help for `Create Volume Backup`
 
+#. Create Volume Backup
 
-.. code:: console
+    $ openstack volume backups create volume-4a59 --name bakup-qianbiao-1 --description=QianBiao-Test-purpose
+        --os-vb-endpoint-override=https://vbs.eu-de.otc.t-systems.com
 
-    # use help command 
-    $ openstack metric list -h
-    usage: openstack metric list [-h] [-f {csv,json,table,value,yaml}] [-c COLUMN]
-                                [--max-width <integer>] [--print-empty]
-                                [--noindent]
-                                [--quote {all,minimal,none,nonnumeric}]
-                                [--namespace {SYS.ECS,SYS.EVS,SYS.AS,SYS.ELB,SYS.VPC,SYS.RDS,SYS.WAF,SYS.HVD}]
-                                [--metric-name <metric-name>]
-                                [--dimensions <key=value>] [--start <key=value>]
-                                [--limit <count>] [--order {desc,asc}]
+#. Show volume backup job
 
-    list metrics
-
-    optional arguments:
-    -h, --help            show this help message and exit
-    --namespace {SYS.ECS,SYS.EVS,SYS.AS,SYS.ELB,SYS.VPC,SYS.RDS,SYS.WAF,SYS.HVD}
-                            list metric with namespace
-    --metric-name <metric-name>
-                            list metric with name(example: cpu_utils)
-    --dimensions <key=value>
-                            Metric dimension (repeat to set multiple dimension,
-                            max repeat time is 3)
-    --start <key=value>   return result list start from (namespace.metric-
-                            name.key:value)
-    --limit <count>       return result limit, max size is 1000
-    --order {desc,asc}    Sort by, default is desc
-
-    output formatters:
-    output formatter options
-
-    -f {csv,json,table,value,yaml}, --format {csv,json,table,value,yaml}
-                            the output format, defaults to table
-    -c COLUMN, --column COLUMN
-                            specify the column(s) to include, can be repeated
-
-    table formatter:
-    --max-width <integer>
-                            Maximum display width, <1 to disable. You can also use
-                            the CLIFF_MAX_TERM_WIDTH environment variable, but the
-                            parameter takes precedence.
-    --print-empty         Print empty table if there is no data to show.
-
-    json formatter:
-    --noindent            whether to disable indenting the JSON
-
-    CSV Formatter:
-    --quote {all,minimal,none,nonnumeric}
-                            when to include quotes, defaults to nonnumeric
-
-
-
-.. code:: console
-
-    # list metric 
-    $ openstack metric list --namespace=SYS.VPC --metric-name=up_bandwidth
-        --start=SYS.VPC.up_bandwidth.bandwidth_id:a6e74b9d-e2c8-4bf8-85a2-cc78a04c6cb4
-        --os-cloudeye-endpoint-override=https://ces.eu-de.otc.t-systems.com
-    +-----------+--------------+---------------------------------------------------+--------+
-    | Namespace | Metric Name  | Dimension                                         | Unit   |
-    +-----------+--------------+---------------------------------------------------+--------+
-    | SYS.VPC   | up_bandwidth | bandwidth_id=775c271a-93f7-4a8c-b8fa-da91a9a0dcd4 | Byte/s |
-    | SYS.VPC   | up_bandwidth | bandwidth_id=74cf708f-9c1e-4f32-bd83-9b945dfe9434 | Byte/s |
-    | SYS.VPC   | up_bandwidth | bandwidth_id=59ab20fd-53c8-44ce-ba03-19dc2f6f038f | Byte/s |
-    | SYS.VPC   | up_bandwidth | bandwidth_id=38d50758-da39-4d3f-9ee0-9bd78050f682 | Byte/s |
-    | SYS.VPC   | up_bandwidth | bandwidth_id=1d101781-c5ca-47f2-a848-dab03ad341f3 | Byte/s |
-    | SYS.VPC   | up_bandwidth | bandwidth_id=1607470e-8542-40a6-a826-a3e3affff2fc | Byte/s |
-    | SYS.VPC   | up_bandwidth | bandwidth_id=13b617cd-459c-4351-87a7-ed85e9e59f9d | Byte/s |
-    | SYS.VPC   | up_bandwidth | bandwidth_id=0c2d5910-55ad-4406-8ee5-fed14a76d0c3 | Byte/s |
-    | SYS.VPC   | up_bandwidth | bandwidth_id=0082ecc5-a7f4-47c2-9196-6fefb4394019 | Byte/s |
-    +-----------+--------------+---------------------------------------------------+--------+
-
-    $ openstack metric list --dimensions=bandwidth_id=775c271a-93f7-4a8c-b8fa-da91a9a0dcd4
-    +-----------+----------------+---------------------------------------------------+--------+
-    | Namespace | Metric Name    | Dimension                                         | Unit   |
-    +-----------+----------------+---------------------------------------------------+--------+
-    | SYS.VPC   | up_bandwidth   | bandwidth_id=775c271a-93f7-4a8c-b8fa-da91a9a0dcd4 | Byte/s |
-    | SYS.VPC   | down_bandwidth | bandwidth_id=775c271a-93f7-4a8c-b8fa-da91a9a0dcd4 | Byte/s |
-    +-----------+----------------+---------------------------------------------------+--------+
+    # show volume backup job
+    $ openstack volume backups job show 2c9eb2c159b48597015a0d4fe9e440a6 --os-vb-api-version=1
+        --os-vb-endpoint-override=https://vbs.eu-de.otc.t-systems.com
+    +------------+-----------------------------------------------------------------------------------------------------------------------+
+    | Field      | Value                                                                                                                 |
+    +------------+-----------------------------------------------------------------------------------------------------------------------+
+    | Id         | 2c9eb2c159b48597015a0d4fe9e440a6                                                                                      |
+    | Type       | bksCreateBackup                                                                                                       |
+    | Begin Time | 2017-02-05T08:07:05.443Z                                                                                              |
+    | End Time   | 2017-02-05T08:11:13.702Z                                                                                              |
+    | entities   | backup_id='d86a3759-7f55-4d02-929b-045cdc17b505', bks_create_volume_name='autobk_volume_2017-02-05T08:07:18.787Z',    |
+    |            | snapshot_id='97b86b2b-1928-4186-8864-24814dae5af0', volume_id='abd4b550-8857-4615-900a-cc25845d74d5'                  |
+    | Status     | SUCCESS                                                                                                               |
+    +------------+-----------------------------------------------------------------------------------------------------------------------
 
 
 

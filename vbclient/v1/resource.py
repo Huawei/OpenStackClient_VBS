@@ -42,7 +42,7 @@ class Job(resource.Resource, display.Display):
         "Type",
         "Begin Time",
         "End Time",
-        "entities",
+        "Entities",
         "Status",
     ]
 
