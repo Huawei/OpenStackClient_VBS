@@ -52,7 +52,7 @@ class Job(resource.Resource, display.Display):
     }
 
     formatter = {
-        "entities": utils.format_dict
+        "Entities": utils.format_dict
     }
 
     def get_show_column_names(self):
