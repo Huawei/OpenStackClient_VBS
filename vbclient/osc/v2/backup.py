@@ -55,7 +55,7 @@ class CreateVolumeBackup(command.Command):
         return 'Request Received, job id: ' + job['job_id']
 
 
-class RestoreVolumeBackup(command.ShowOne):
+class RestoreVolumeBackup(command.Command):
     _description = _("Restore volume backup")
 
     def get_parser(self, prog_name):
