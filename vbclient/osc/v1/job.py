@@ -38,5 +38,6 @@ class ShowJob(command.ShowOne):
     def take_action(self, args):
         mgr = self.app.client_manager.volume_backup.job_mgr
         job = mgr.get(args.job_id)
-        columns = resource.Job.show_column_names
-        return columns, job.get_display_data(columns)
+        columns = job.get_show_column_names()
+        formatter = job.formatter
+        return columns, job.get_display_data(columns, formatter=formatter)

@@ -13,6 +13,7 @@
 #   License for the specific language governing permissions and limitations
 #   under the License.
 #
+from osc_lib import utils
 
 from vbclient.common import display
 from vbclient.common import resource
@@ -36,16 +37,30 @@ class Job(resource.Resource, display.Display):
     #     "error_code": null,
     #     "fail_reason": null
     # }
-
     show_column_names = [
         "Id",
         "Type",
         "Begin Time",
         "End Time",
+        "entities",
+        "Fail Reason",
         "Status",
     ]
 
     column_2_property = {
-        "Id" : "job_id",
+        "Id": "job_id",
         "Type": "job_type",
     }
+
+    formatter = {
+        "entities": utils.format_dict
+    }
+
+    def get_show_column_names(self):
+        column_names = self.show_column_names[:]
+        if "fail_reason" in self.original:
+            column_names.insert(5, "Fail Reason")
+        if "error_code" in self.original:
+            column_names.insert(5, "Error Code")
+        return column_names
+
