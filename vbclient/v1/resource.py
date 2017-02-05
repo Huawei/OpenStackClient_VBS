@@ -18,9 +18,34 @@ from vbclient.common import display
 from vbclient.common import resource
 
 
-class VolumeBackup(resource.Resource, display.Display):
-    """Volume Backup resource instance"""
+class Job(resource.Resource, display.Display):
+    """Volume Backup Job resource instance"""
 
+    # {
+    #     "status": "SUCCESS",
+    #     "entities": {
+    #         "bks_create_volume_name": "autobk_volume",
+    #         "backup_id": "ba5401a2-7cd2-4c01-8c0d-c936ab412d6d",
+    #         "volume_id": "7e5fdc5a-5e36-4b22-8bcc-7f17037290cc",
+    #         "snapshot_id": "a77a96bf-dd18-40bf-a446-fdcefc1719ec"
+    #     },
+    #     "job_id": "4010b39b5281d3590152874bfa3b1604",
+    #     "job_type": "bksCreateBackup",
+    #     "begin_time": "2016-01-28T16:14:09.466Z",
+    #     "end_time": "2016-01-28T16:25:27.690Z",
+    #     "error_code": null,
+    #     "fail_reason": null
+    # }
 
-class VolumeBackupRestore(resource.Resource, display.Display):
-    """Volume Backup Restore resource instance"""
+    show_column_names = [
+        "Id",
+        "Type",
+        "Begin Time",
+        "End Time",
+        "Status",
+    ]
+
+    column_2_property = {
+        "Id" : "job_id",
+        "Type": "job_type",
+    }

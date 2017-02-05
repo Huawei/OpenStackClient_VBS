@@ -16,7 +16,7 @@
 
 from vbclient.common import manager
 from vbclient.common import utils
-from vbclient.v1 import resource
+from vbclient.v2 import resource
 
 
 class VolumeBackupManager(manager.Manager):

@@ -37,20 +37,21 @@ class Client(object):
         """
 
         from vbclient.common import httpclient as client
-        from vbclient.v1 import job_mgr
+        from vbclient.v2 import backup_mgr
+        from vbclient.v2 import restore_mgr
 
         # http_log_debug = utils.get_effective_log_level() <= logging.DEBUG
         default_options = {
             'service_name': self.service_name,
             'client_name': 'Volume Backup Client(HuaWei)',
-            'client_version': 'V1',
+            'client_version': 'V2',
             'logger': LOGGER,
         }
         kwargs.update(default_options)
 
         if endpoint:
-            endpoint += '/v1/%(project_id)s'
-
+            endpoint += '/v2/%(project_id)s'
         self.client = client.OpenStackHttpClient(session, endpoint, **kwargs)
-        self.job_mgr = job_mgr.JobManager(self.client)
+        self.backup_mgr = backup_mgr.VolumeBackupManager(self.client)
+        self.restore_mgr = restore_mgr.VolumeBackupRestoreManager(self.client)
 

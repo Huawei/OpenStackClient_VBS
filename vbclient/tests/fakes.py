@@ -22,7 +22,7 @@ from vbclient.common import display
 from vbclient.common import manager
 from vbclient.common import resource as r
 from vbclient.common import utils
-from vbclient.v1 import backup_mgr
+from vbclient.v2 import backup_mgr
 
 # fake request id
 FAKE_REQUEST_ID = 'req-0594c66b-6973-405c-ae2c-43fcfc00f2e3'

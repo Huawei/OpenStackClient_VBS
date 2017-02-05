@@ -43,37 +43,3 @@ class BaseParser(object):
             help=(_('Endpoint to use for the {service_type} service'
                   ' instead of the endpoint in the catalog').format(
                     service_type=service_type)))
-
-    @staticmethod
-    def add_limit_option(parser, max_number):
-        parser.add_argument(
-            "--limit",
-            type=int,
-            metavar="<count>",
-            help=_("return result limit, max size is %d" % max_number)
-        )
-
-    @staticmethod
-    def add_offset_option(parser):
-        parser.add_argument(
-            "--offset",
-            type=int,
-            metavar="<count>",
-            help=_("return result offset")
-        )
-
-    @staticmethod
-    def add_sortdir_option(parser):
-        parser.add_argument(
-            "--sort-dir",
-            choices=['desc', 'asc'],
-            help=_("Sort by, default is desc")
-        )
-
-    @staticmethod
-    def add_order_option(parser):
-        parser.add_argument(
-            "--order",
-            choices=['desc', 'asc'],
-            help=_("Sort by, default is desc")
-        )

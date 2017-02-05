@@ -175,6 +175,58 @@ Here's an example of listing antiddos status using Python library with keystone 
 
     >>> from keystoneauth1 import session
     >>> from keystoneauth1 import client
+    >>> from vbclient.v2 import client
+
+    >>> # Use Keystone API v3 for authentication as example
+    >>> auth = identity.v3.Password(auth_url=u'http://localhost:5000/v3',
+    ...                             username=u'admin_user',
+    ...                             user_domain_name=u'Default',
+    ...                             password=u'password',
+    ...                             project_name=u'demo',
+    ...                             project_domain_name=u'Default')
+
+    >>> # Next create a Keystone session using the auth plugin we just created
+    >>> session = session.Session(auth=auth)
+
+    >>> # Now we use the session to create a CloudEye client
+    >>> client = client.Client(session=session)
+
+    >>> # Then we can access all Cloud Eye API
+    >>> # Let's try list metric API
+    >>> client.metric_mgr.list(namespace='SYS.VPC')
+    [<Metric namespace=SYS.VPC ....>, ....]
+
+
+
+
+    >>> from keystoneauth1 import session
+    >>> from keystoneauth1 import client
+    >>> from vbclient.v2 import client
+
+    >>> # Use Keystone API v3 for authentication as example
+    >>> auth = identity.v3.Password(auth_url=u'http://localhost:5000/v3',
+    ...                             username=u'admin_user',
+    ...                             user_domain_name=u'Default',
+    ...                             password=u'password',
+    ...                             project_name=u'demo',
+    ...                             project_domain_name=u'Default')
+
+    >>> # Next create a Keystone session using the auth plugin we just created
+    >>> session = session.Session(auth=auth)
+
+    >>> # Now we use the session to create a CloudEye client
+    >>> client = client.Client(session=session)
+
+    >>> # Then we can access all Cloud Eye API
+    >>> # Let's try list metric API
+    >>> client.metric_mgr.list(namespace='SYS.VPC')
+    [<Metric namespace=SYS.VPC ....>, ....]
+
+
+
+
+    >>> from keystoneauth1 import session
+    >>> from keystoneauth1 import client
     >>> from vbclient.v1 import client
 
     >>> # Use Keystone API v3 for authentication as example
