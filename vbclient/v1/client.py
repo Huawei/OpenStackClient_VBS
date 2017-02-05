@@ -50,7 +50,7 @@ class Client(object):
         kwargs.update(default_options)
 
         if endpoint:
-            endpoint += '/V2/%(project_id)s'
+            endpoint += '/v2/%(project_id)s'
         self.client = client.OpenStackHttpClient(session, endpoint, **kwargs)
         self.backup_mgr = backup_mgr.VolumeBackupManager(self.client)
         self.restore_mgr = restore_mgr.VolumeBackupRestoreManager(self.client)

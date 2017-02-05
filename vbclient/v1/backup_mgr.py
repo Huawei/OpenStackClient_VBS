@@ -15,6 +15,7 @@
 #
 
 from vbclient.common import manager
+from vbclient.common import utils
 from vbclient.v1 import resource
 
 
@@ -29,12 +30,12 @@ class VolumeBackupManager(manager.Manager):
         :param name: The name of the backup.
         :param description: The description of the backup.
         :rtype: :class:`DictWithMeta
+
         """
-        body = {
-            'backup': {
-                'volume_id': volume_id,
-                'name': name,
-                'description': description
-            }
-        }
-        return self._create('/cloudbackups', json=body, raw=True)
+        backup = utils.remove_empty_from_dict({
+            'volume_id': volume_id,
+            'name': name,
+            'description': description
+        })
+        json = {'backup': backup}
+        return self._create('/cloudbackups', json=json, raw=True)
