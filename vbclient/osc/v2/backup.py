@@ -76,6 +76,6 @@ class RestoreVolumeBackup(command.ShowOne):
         volume_client = self.app.client_manager.volume
         backup = utils.find_resource(volume_client.backups, args.backup)
         volume = utils.find_resource(volume_client.volumes, args.volume)
-        mgr = self.app.client_manager.volume_backup.backup_mgr
-        job = volume_client.restores.restore(backup.id, volume.id)
+        mgr = self.app.client_manager.volume_backup.restore_mgr
+        job = mgr.restore(backup.id, volume.id)
         return 'Request Received, job id: ' + job['job_id']
