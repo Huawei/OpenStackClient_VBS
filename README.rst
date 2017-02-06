@@ -29,8 +29,10 @@ Command Line Client Usage
 This plugin is integrated with `OpenStack Client`_ , so the command line client
 follow all the usage **openstack** provided.
 
+Try help command
+^^^^^^^^^^^^^^^^
 
-Show Help for command
+.. code:: console
 
     $ openstack --help
     usage: openstack [--version] [-v | -q] [--log-file LOG_FILE] [-h] [--debug]
@@ -53,55 +55,70 @@ Show Help for command
                  .......
 
 
-Cloud-Eye-Service Client contains commands list in table below, use -h option to get more useage
+Cloud-Eye-Service Client contains commands list below
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. note::
+
+    use "command -h" to get usage detail of the command
 
 
 1. Show Help for `Create Volume Backup`
 
-    $ openstack volume backups create -h
-    usage: openstack volume backups create [-h] [--name <name>]
-                                           [--description <description>]
-                                           <volume>
+    .. code::
 
-    Create new volume backup (HuaWei custom)
+        $ openstack volume backups create -h
+        usage: openstack volume backups create [-h] [--name <name>]
+                                               [--description <description>]
+                                               <volume>
 
-    positional arguments:
-      <volume>              Volume to backup (name or ID)
+        Create new volume backup (HuaWei custom)
 
-    optional arguments:
-      -h, --help            show this help message and exit
-      --name <name>         Name of the backup
-      --description <description>
-                            Description of the backup
+        positional arguments:
+          <volume>              Volume to backup (name or ID)
+
+        optional arguments:
+          -h, --help            show this help message and exit
+          --name <name>         Name of the backup
+          --description <description>
+                                Description of the backup
+
 
 #. Create Volume Backup
 
-    $ openstack volume backups create volume-telia-WS1 --name A1-QianBiao-Test --description=QianBiao-Test-purpose
-        --os-vb-endpoint-override=https://vbs.eu-de.otc.t-systems.com
-    Request Received, job id: 2c9eb2c559b8a2c2015a0e039f095821
+    .. code::
+
+        $ openstack volume backups create volume-telia-WS1 --name A1-QianBiao-Test --description=QianBiao-Test-purpose
+            --os-vb-endpoint-override=https://vbs.eu-de.otc.t-systems.com
+        Request Received, job id: 2c9eb2c559b8a2c2015a0e039f095821
 
 #. Restore Volume Backup
 
-    # restore backup `A1-QianBiao-Test` for volume `volume-telia-WS1`
-    $ openstack volume backups restore A1-QianBiao-Test volume-telia-WS1
-    Request Received, job id: 2c9eb2c559b8a2c2015a0e039f095821
+    .. code::
+
+        # restore backup `A1-QianBiao-Test` for volume `volume-telia-WS1`
+        $ openstack volume backups restore A1-QianBiao-Test volume-telia-WS1
+        Request Received, job id: 2c9eb2c559b8a2c2015a0e039f095821
+
 
 #. Show volume backup job
 
-    # show volume backup job
-    $ openstack volume backups job show 2c9eb2c559b8a2c2015a0e039f095821 --os-vb-api-version=1
-        --os-vb-endpoint-override=https://vbs.eu-de.otc.t-systems.com
-    +------------+-----------------------------------------------------------------------------------------------------------------------+
-    | Field      | Value                                                                                                                 |
-    +------------+-----------------------------------------------------------------------------------------------------------------------+
-    | Id         | 2c9eb2c559b8a2c2015a0e039f095821                                                                                      |
-    | Type       | bksCreateBackup                                                                                                       |
-    | Begin Time | 2017-02-05T11:23:22.760Z                                                                                              |
-    | End Time   | 2017-02-05T11:27:19.557Z                                                                                              |
-    | Entities   | backup_id='c6be4287-6707-4f5b-84ef-07013851b60d', bks_create_volume_name='autobk_volume_2017-02-05T11:23:36.346Z',    |
-    |            | snapshot_id='34f14aeb-cede-4e1b-8d9f-14a2c43bae9f', volume_id='a5109cba-1b1f-4d40-b3a9-753bc808b66a'                  |
-    | Status     | SUCCESS                                                                                                               |
-    +------------+-----------------------------------------------------------------------------------------------------------------------
+    .. code::
+
+        # show volume backup job
+        $ openstack volume backups job show 2c9eb2c559b8a2c2015a0e039f095821 --os-vb-api-version=1
+            --os-vb-endpoint-override=https://vbs.eu-de.otc.t-systems.com
+        +------------+-----------------------------------------------------------------------------------------------------------------------+
+        | Field      | Value                                                                                                                 |
+        +------------+-----------------------------------------------------------------------------------------------------------------------+
+        | Id         | 2c9eb2c559b8a2c2015a0e039f095821                                                                                      |
+        | Type       | bksCreateBackup                                                                                                       |
+        | Begin Time | 2017-02-05T11:23:22.760Z                                                                                              |
+        | End Time   | 2017-02-05T11:27:19.557Z                                                                                              |
+        | Entities   | backup_id='c6be4287-6707-4f5b-84ef-07013851b60d', bks_create_volume_name='autobk_volume_2017-02-05T11:23:36.346Z',    |
+        |            | snapshot_id='34f14aeb-cede-4e1b-8d9f-14a2c43bae9f', volume_id='a5109cba-1b1f-4d40-b3a9-753bc808b66a'                  |
+        | Status     | SUCCESS                                                                                                               |
+        +------------+-----------------------------------------------------------------------------------------------------------------------
 
 
 Python Library Usage
