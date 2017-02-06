@@ -20,10 +20,8 @@ Currently, We can install the plugin from source code
 Command Line Client Usage
 -----------------------------------------
 
-.. note::
-
+..
     The command line client is self-documenting. Use the --help or -h flag to access the usage options.
-    You can find more command line client examples `here <./commands.rst>`_
 
 
 This plugin is integrated with `OpenStack Client`_ , so the command line client
@@ -57,11 +55,6 @@ Try help command
 
 Cloud-Eye-Service Client contains commands list below
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. note::
-
-    use "command -h" to get usage detail of the command
-
 
 1. Show Help for `Create Volume Backup`
 
