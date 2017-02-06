@@ -1,0 +1,3 @@
+[report]
+include = vbclient/*
+omit = vbclient/tests/*
