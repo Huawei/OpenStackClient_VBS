@@ -124,7 +124,7 @@ Cloud-Eye-Service Client contains commands list below
 Python Library Usage
 -------------------------------
 
-The full api is documented in the `CloudEye Offical Document`_ site
+The full api is documented in the `VolumeBackup Offical Documen`_ site
 
 Here's an example of listing antiddos status using Python library with keystone V3 authentication:
 
@@ -145,65 +145,12 @@ Here's an example of listing antiddos status using Python library with keystone 
     >>> # Next create a Keystone session using the auth plugin we just created
     >>> session = session.Session(auth=auth)
 
-    >>> # Now we use the session to create a CloudEye client
-    >>> client = client.Client(session=session)
+    >>> # Now we use the session to create a Volume Backup client
+    >>> client = client.Client(session=session, endpoint="https://vbs.com")
 
-    >>> # Then we can access all Cloud Eye API
-    >>> # Let's try list metric API
-    >>> client.metric_mgr.list(namespace='SYS.VPC')
-    [<Metric namespace=SYS.VPC ....>, ....]
-
-
-
-
-    >>> from keystoneauth1 import session
-    >>> from keystoneauth1 import client
-    >>> from vbclient.v2 import client
-
-    >>> # Use Keystone API v3 for authentication as example
-    >>> auth = identity.v3.Password(auth_url=u'http://localhost:5000/v3',
-    ...                             username=u'admin_user',
-    ...                             user_domain_name=u'Default',
-    ...                             password=u'password',
-    ...                             project_name=u'demo',
-    ...                             project_domain_name=u'Default')
-
-    >>> # Next create a Keystone session using the auth plugin we just created
-    >>> session = session.Session(auth=auth)
-
-    >>> # Now we use the session to create a CloudEye client
-    >>> client = client.Client(session=session)
-
-    >>> # Then we can access all Cloud Eye API
-    >>> # Let's try list metric API
-    >>> client.metric_mgr.list(namespace='SYS.VPC')
-    [<Metric namespace=SYS.VPC ....>, ....]
-
-
-
-
-    >>> from keystoneauth1 import session
-    >>> from keystoneauth1 import client
-    >>> from vbclient.v1 import client
-
-    >>> # Use Keystone API v3 for authentication as example
-    >>> auth = identity.v3.Password(auth_url=u'http://localhost:5000/v3',
-    ...                             username=u'admin_user',
-    ...                             user_domain_name=u'Default',
-    ...                             password=u'password',
-    ...                             project_name=u'demo',
-    ...                             project_domain_name=u'Default')
-
-    >>> # Next create a Keystone session using the auth plugin we just created
-    >>> session = session.Session(auth=auth)
-
-    >>> # Now we use the session to create a CloudEye client
-    >>> client = client.Client(session=session)
-
-    >>> # Then we can access all Cloud Eye API
-    >>> # Let's try list metric API
-    >>> client.metric_mgr.list(namespace='SYS.VPC')
-    [<Metric namespace=SYS.VPC ....>, ....]
+    >>> # Then we can access all Volume Backup Create API
+    >>> client.backup_mgr.create(volume_id='xxxxx', name="Test-Purpose")
+    {"job_id" : "xxxxxxxxxxxxx"}
 
 
 .. note::
@@ -215,9 +162,9 @@ Here's an example of listing antiddos status using Python library with keystone 
 
 * License: Apache License, Version 2.0
 * `OpenStack Client`_
-* `CloudEye Offical Document`_
+* `VolumeBackup Offical Document`_
 * `KeyStone`_
 
 .. _OpenStack Client: https://github.com/openstack/python-openstackclient
-.. _CloudEye Offical Document: http://support.hwclouds.com/ces/
+.. _VolumeBackup Offical Document: http://support.hwclouds.com/vbs/
 .. _KeyStone: http://docs.openstack.org/developer/keystoneauth/
