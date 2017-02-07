@@ -60,7 +60,7 @@ Cloud-Eye-Service Client contains commands list below
 
     .. code::
 
-        $ openstack volume backups create -h
+        $ openstack volume backup create ext -h
         usage: openstack volume backups create [-h] [--name <name>]
                                                [--description <description>]
                                                <volume>
@@ -81,7 +81,7 @@ Cloud-Eye-Service Client contains commands list below
 
     .. code::
 
-        $ openstack volume backups create volume-telia-WS1 --name A1-QianBiao-Test --description=QianBiao-Test-purpose
+        $ openstack volume backup create ext volume-telia-WS1 --name A1-QianBiao-Test --description=QianBiao-Test-purpose
             --os-vb-endpoint-override=https://vbs.eu-de.otc.t-systems.com
         Request Received, job id: 2c9eb2c559b8a2c2015a0e039f095821
 
@@ -90,7 +90,7 @@ Cloud-Eye-Service Client contains commands list below
     .. code::
 
         # restore backup `A1-QianBiao-Test` for volume `volume-telia-WS1`
-        $ openstack volume backups restore A1-QianBiao-Test volume-telia-WS1
+        $ openstack volume backup restore ext A1-QianBiao-Test volume-telia-WS1
         Request Received, job id: 2c9eb2c559b8a2c2015a0e039f095821
 
 
