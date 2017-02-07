@@ -1,5 +1,4 @@
 #   Copyright 2016 Huawei, Inc. All rights reserved.
-#
 #   Licensed under the Apache License, Version 2.0 (the "License"); you may
 #   not use this file except in compliance with the License. You may obtain
 #   a copy of the License at
@@ -74,10 +73,12 @@ class TestShowJob(base.VolumeBackupBaseTestCase):
             "Status",
         ])
 
-        entities = six.text_type("backup_id='ba5401a2-7cd2-4c01-8c0d-c936ab412d6d', "
-                                 "bks_create_volume_name='autobk_volume', "
-                                 "snapshot_id='a77a96bf-dd18-40bf-a446-fdcefc1719ec', "
-                                 "volume_id='7e5fdc5a-5e36-4b22-8bcc-7f17037290cc'")
+        entities = six.text_type(
+            "backup_id='ba5401a2-7cd2-4c01-8c0d-c936ab412d6d', "
+            "bks_create_volume_name='autobk_volume', "
+            "snapshot_id='a77a96bf-dd18-40bf-a446-fdcefc1719ec', "
+            "volume_id='7e5fdc5a-5e36-4b22-8bcc-7f17037290cc'"
+        )
 
         self.assertEqual(data, (
             "4010b39b5281d3590152874bfa3b1604",
@@ -87,7 +88,6 @@ class TestShowJob(base.VolumeBackupBaseTestCase):
             entities,
             "SUCCESS",
         ))
-
 
     def test_show_failed_job(self, mocked_get):
         args = [
@@ -119,10 +119,12 @@ class TestShowJob(base.VolumeBackupBaseTestCase):
             "Status",
         ])
 
-        entities = six.text_type("backup_id='ba5401a2-7cd2-4c01-8c0d-c936ab412d6d', "
-                                 "bks_create_volume_name='autobk_volume', "
-                                 "snapshot_id='a77a96bf-dd18-40bf-a446-fdcefc1719ec', "
-                                 "volume_id='7e5fdc5a-5e36-4b22-8bcc-7f17037290cc'")
+        entities = six.text_type(
+            "backup_id='ba5401a2-7cd2-4c01-8c0d-c936ab412d6d', "
+            "bks_create_volume_name='autobk_volume', "
+            "snapshot_id='a77a96bf-dd18-40bf-a446-fdcefc1719ec', "
+            "volume_id='7e5fdc5a-5e36-4b22-8bcc-7f17037290cc'"
+        )
 
         self.assertEqual(data, (
             "4010b39b5281d3590152874bfa3b1604",
