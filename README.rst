@@ -1,9 +1,9 @@
-python-antiddosclient
+python-vbclient
 =====================
 
 This is a `OpenStack Client`_ plugin for HuaWei Volume Backup Management API
 which provides **command-line scripts** (integrated with openstack) and
-Python library for accessing the Volume-Backup management API.
+Python library for accessing the Cloud-Eye management API.
 
 
 Installation
@@ -23,7 +23,7 @@ Command Line Client Usage
 .. note::
 
     The command line client is self-documenting. Use the --help or -h flag to access the usage options.
-
+    You can find more command line client examples `here <./commands.rst>`_
 
 
 This plugin is integrated with `OpenStack Client`_ , so the command line client
@@ -129,7 +129,7 @@ Here's an example of listing antiddos status using Python library with keystone 
     >>> # Next create a Keystone session using the auth plugin we just created
     >>> session = session.Session(auth=auth)
 
-    >>> # Now we use the session to create a Volume Backup client
+    >>> # Now we use the session to create a CloudEye client
     >>> client = client.Client(session=session)
 
     >>> # Then we can access all Volume Backup API
