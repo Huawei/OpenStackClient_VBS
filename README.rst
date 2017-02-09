@@ -12,9 +12,11 @@ Currently, We can install the plugin from source code
 
 .. code:: console
 
-  git clone https://github.com/Huawei/OpenStackClient_VBS python-vbclient
-  cd python-vbclient
-  python setup.py install
+    $ git clone https://github.com/Huawei/OpenStackClient_VBS python-vbclient
+    $ cd python-vbclient
+    # use python setup.py develop for test purpose
+    $ python setup.py install
+    $ pip install -r requirements.txt
 
 
 Command Line Client Usage
