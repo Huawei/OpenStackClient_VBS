@@ -15,10 +15,8 @@ import copy
 
 import mock
 import six
-from osc_lib import utils
 
 from vbclient.osc.v1 import job
-
 from vbclient.tests import base
 from vbclient.v1 import job_mgr
 from vbclient.v1 import resource
