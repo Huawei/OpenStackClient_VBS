@@ -30,7 +30,7 @@ This plugin is integrated with `OpenStack Client`_ , so the command line client
 follow all the usage **openstack** provided.
 
 
-Show Help for command
+Show Help for command::
 
     $ openstack --help
     usage: openstack [--version] [-v | -q] [--log-file LOG_FILE] [-h] [--debug]
@@ -57,7 +57,7 @@ Volume-Backup-Service Client contains commands list in table below, use -h
 option to get more usage
 
 
-1. Show Help for `Create Volume Backup`
+1. Show Help for `Create Volume Backup`::
 
     $ openstack volume backups create -h
     usage: openstack volume backups create [-h] [--name <name>]
@@ -75,19 +75,19 @@ option to get more usage
       --description <description>
                             Description of the backup
 
-#. Create Volume Backup
+#. Create Volume Backup::
 
     $ openstack volume backups create volume-telia-WS1 --name A1-QianBiao-Test --description=QianBiao-Test-purpose
         --os-vb-endpoint-override=https://vbs.eu-de.otc.t-systems.com
     Request Received, job id: 2c9eb2c559b8a2c2015a0e039f095821
 
-#. Restore Volume Backup
+#. Restore Volume Backup::
 
     # restore backup `A1-QianBiao-Test` for volume `volume-telia-WS1`
     $ openstack volume backups restore A1-QianBiao-Test volume-telia-WS1
     Request Received, job id: 2c9eb2c559b8a2c2015a0e039f095821
 
-#. Show volume backup job
+#. Show volume backup job::
 
     # show volume backup job
     $ openstack volume backups job show 2c9eb2c559b8a2c2015a0e039f095821 --os-vb-api-version=1
