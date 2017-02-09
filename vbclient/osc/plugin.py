@@ -35,7 +35,7 @@ def make_client(instance):
     """Returns an orchestration service client"""
 
     api_version = instance._api_version[API_NAME]
-    as_client_clazz = utils.get_client_class(API_NAME, api_version, API_VERSIONS)
+    client_clazz = utils.get_client_class(API_NAME, api_version, API_VERSIONS)
 
     kwargs = {
         'region_name': instance.region_name,
@@ -45,12 +45,12 @@ def make_client(instance):
 
     LOGGER.debug('-------------------------------------------------------')
     LOGGER.debug('Instantiating volume backup client')
-    LOGGER.debug('  +-- client: %s', as_client_clazz)
+    LOGGER.debug('  +-- client: %s', client_clazz)
     LOGGER.debug('  +-- kwargs: %s', kwargs)
     LOGGER.debug('  +-- endpoint: %s', endpoint)
     LOGGER.debug('-------------------------------------------------------')
 
-    client = as_client_clazz(instance.session, endpoint, **kwargs)
+    client = client_clazz(instance.session, endpoint, **kwargs)
     return client
 
 
