@@ -61,7 +61,7 @@ option to get more usage
 
 1. Show Help for `Create Volume Backup`::
 
-    $ openstack volume backups create -h
+    $ openstack volume backup create ext -h
     usage: openstack volume backups create [-h] [--name <name>]
                                            [--description <description>]
                                            <volume>
@@ -79,20 +79,21 @@ option to get more usage
 
 #. Create Volume Backup::
 
-    $ openstack volume backups create volume-telia-WS1 --name A1-QianBiao-Test --description=QianBiao-Test-purpose
+    $ openstack volume backup create ext volume-telia-WS1 --name
+    A1-QianBiao-Test --description=QianBiao-Test-purpose
         --os-vb-endpoint-override=https://vbs.eu-de.otc.t-systems.com
     Request Received, job id: 2c9eb2c559b8a2c2015a0e039f095821
 
 #. Restore Volume Backup::
 
     # restore backup `A1-QianBiao-Test` for volume `volume-telia-WS1`
-    $ openstack volume backups restore A1-QianBiao-Test volume-telia-WS1
+    $ openstack volume backup restore ext A1-QianBiao-Test volume-telia-WS1
     Request Received, job id: 2c9eb2c559b8a2c2015a0e039f095821
 
 #. Show volume backup job::
 
     # show volume backup job
-    $ openstack volume backups job show 2c9eb2c559b8a2c2015a0e039f095821 --os-vb-api-version=1
+    $ openstack volume backup job show 2c9eb2c559b8a2c2015a0e039f095821 --os-vb-api-version=1
         --os-vb-endpoint-override=https://vbs.eu-de.otc.t-systems.com
     +------------+-----------------------------------------------------------------------------------------------------------------------+
     | Field      | Value                                                                                                                 |
