@@ -35,7 +35,7 @@ class Client(object):
             Keyword arguments passed to keystoneauth1.session.Session().
         """
 
-        from vbclient.common import httpclient as http_client
+        from vbclient.common import httpclient
         from vbclient.v2 import backup_mgr
         from vbclient.v2 import restore_mgr
 
@@ -50,7 +50,7 @@ class Client(object):
 
         if endpoint:
             endpoint += '/v2/%(project_id)s'
-        self.client = http_client.OpenStackHttpClient(
+        self.client = httpclient.OpenStackHttpClient(
             session, endpoint, **kwargs
         )
         self.backup_mgr = backup_mgr.VolumeBackupManager(self.client)

@@ -48,7 +48,7 @@ class Client(object):
         kwargs.update(default_options)
 
         if endpoint:
-            endpoint += '/v2/%(project_id)s'
+            endpoint += '/v1/%(project_id)s'
 
         self.client = client.OpenStackHttpClient(session, endpoint, **kwargs)
         self.job_mgr = job_mgr.JobManager(self.client)
