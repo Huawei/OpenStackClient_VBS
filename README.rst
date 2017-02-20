@@ -95,7 +95,7 @@ option to get more usage
 
 #. Create Volume Backup::
 
-    $ openstack volume backup create ext volume-telia-WS1 --name
+    $ openstack volume backup ext create volume-telia-WS1 --name
     A1-QianBiao-Test --description=QianBiao-Test-purpose
         --os-vb-endpoint-override=https://vbs.eu-de.otc.t-systems.com
     Request Received, job id: 2c9eb2c559b8a2c2015a0e039f095821
@@ -103,7 +103,7 @@ option to get more usage
 #. Restore Volume Backup::
 
     # restore backup `A1-QianBiao-Test` for volume `volume-telia-WS1`
-    $ openstack volume backup restore ext A1-QianBiao-Test volume-telia-WS1
+    $ openstack volume backup ext restore A1-QianBiao-Test volume-telia-WS1
     Request Received, job id: 2c9eb2c559b8a2c2015a0e039f095821
 
 #. Show volume backup job::
