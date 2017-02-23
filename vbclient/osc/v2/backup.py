@@ -35,6 +35,7 @@ class CreateVolumeBackup(command.Command):
         parser.add_argument(
             "--name",
             metavar="<name>",
+            required=True,
             help=_("Name of the backup")
         )
 
