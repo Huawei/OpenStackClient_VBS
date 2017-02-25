@@ -77,10 +77,10 @@ option to get more usage
 
 1. Show Help for `Create Volume Backup`::
 
-    $ openstack volume backup create ext -h
-    usage: openstack volume backups create [-h] [--name <name>]
-                                           [--description <description>]
-                                           <volume>
+    $ openstack volume backup ext create -h
+    usage: openstack volume backup ext create [-h] --name <name>
+                                              [--description <description>]
+                                              <volume>
 
     Create new volume backup (HuaWei custom)
 
@@ -92,6 +92,7 @@ option to get more usage
       --name <name>         Name of the backup
       --description <description>
                             Description of the backup
+
 
 #. Create Volume Backup::
 

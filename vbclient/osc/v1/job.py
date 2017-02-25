@@ -30,7 +30,7 @@ class ShowJob(command.ShowOne):
         parser.add_argument(
             "job_id",
             metavar="<job-id>",
-            help=_("job to shown")
+            help=_("job to display (ID)")
         )
         return parser
 
